@@ -21,6 +21,9 @@ build-update:
 build-gpu:
 	docker compose -f docker-compose.yaml -f docker-compose-nvidia.yaml build
 
+build-release:
+	cd api && docker build --platform linux/amd64 -f Dockerfile --target release -t ${IMAGE_NAME}:release .
+
 up:
 	docker compose -f docker-compose.yaml up
 

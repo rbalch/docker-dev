@@ -139,3 +139,12 @@ WORKDIR /workspace
 # run fixuid first; it remaps dev->host UID:GID, then execs your CMD as 'dev'
 ENTRYPOINT ["fixuid","-q","--"]
 CMD ["zsh"]  # or your app command
+
+
+# === Release Stage ===
+FROM python:3.13-slim AS release
+
+# System deps (minimal)
+RUN apt update -y && apt install --no-install-recommends -y curl
+
+#TODO: copy files from dev
