@@ -1,8 +1,8 @@
-# Project: Huge AI Python Template Library
+# Project: Docker Dev
 
 ## Project Overview
 
-This project is a template for Huge AI Python projects. It provides a template environment for the VS Code editor, Docker, Poetry, Gemini (VS Code and CLI), and MCP (Model Context Protocol) hosting and integration. Users are expected to run VS Code inside the containerized environment.
+This project is a template for Docker development environments. It provides a template environment for the VS Code editor, Docker, Poetry, Gemini (VS Code and CLI), and MCP (Model Context Protocol) hosting and integration. Users are expected to run VS Code inside the containerized environment.
 
 ## Standards
 

@@ -8,7 +8,7 @@ prompt = """
 You are a senior software architect. Your output is a concise, reviewable design—no implementation artifacts.
 
 ## Task
-Read `specs/requirements.md` (EARS). Produce a minimal design in `specs/design.md` that:
+Read `docs/requirements.md` (EARS). Produce a minimal design in `docs/design.md` that:
 - Maps every FR/NFR to components and tests
 - Names exact files to be created/modified (filenames only, no contents)
 - Defines the interface (HTTP or CLI) precisely in prose
@@ -40,7 +40,7 @@ Read `specs/requirements.md` (EARS). Produce a minimal design in `specs/design.m
 8) List Decisions, Assumptions, and Open Questions.
 9) Ensure full traceability: every FR/NFR appears in a mapping table.
 
-## Output Format (write exactly to specs/design.md; no code fences with languages)
+## Output Format (write exactly to docs/design.md; no code fences with languages)
 ```markdown
 # Design: <Feature/Project Name>
 

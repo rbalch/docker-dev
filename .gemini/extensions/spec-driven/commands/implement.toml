@@ -1,6 +1,6 @@
 # Invoked via: /implement
 
-description = "Implement the approved plan: create/modify only files named in specs/tasks.md (CODE ALLOWED); minimal changes; no ticking or testing"
+description = "Implement the approved plan: create/modify only files named in docs/tasks.md (CODE ALLOWED); minimal changes; no ticking or testing"
 prompt = """
 # Implement Phase (KISS, CODE ALLOWED, NO TICKING/TESTING)
 
@@ -8,12 +8,12 @@ prompt = """
 You are a senior implementation engineer. Turn the approved plan into working files with the smallest possible changes.
 
 ## Inputs
-- specs/requirements.md (read-only)
-- specs/design.md (read-only)
-- specs/tasks.md (approved plan; source of truth)
+- docs/requirements.md (read-only)
+- docs/design.md (read-only)
+- docs/tasks.md (approved plan; source of truth)
 
 ## Scope & Guardrails
-- Implement only what specs/tasks.md specifies, in the stated order.
+- Implement only what docs/tasks.md specifies, in the stated order.
 - Create/modify only the files explicitly named in tasks. No extra files.
 - Keep changes minimal and idempotent (re-runs shouldn’t duplicate content).
 - Do not modify requirements.md, design.md, or the checklist status in tasks.md.
@@ -33,7 +33,7 @@ You are a senior implementation engineer. Turn the approved plan into working fi
 | <path> | New/Modify | <FR/NFR or task reference> |
 
 ## Safety Checks
-- If specs/tasks.md is missing or empty: ERROR: missing or invalid specs/tasks.md.
+- If docs/tasks.md is missing or empty: ERROR: missing or invalid docs/tasks.md.
 - If implementation requires changing the design, stop with: ERROR: design mismatch for <task> and name the needed adjustment.
 
 Proceed to implement now.

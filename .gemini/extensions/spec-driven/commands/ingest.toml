@@ -1,6 +1,6 @@
 # Invoked via: /ingest
 
-description = "Ingest a raw brief and produce normalized EARS `specs/requirements.md`"
+description = "Ingest a raw brief and produce normalized EARS `docs/requirements.md`"
 prompt = """
 # Requirements Ingestion Prompt (EARS normalization)
 
@@ -8,7 +8,7 @@ prompt = """
 You are a senior requirements engineer and software architect. You excel at turning messy or informal briefs into clear, testable requirements using EARS (Easy Approach to Requirements Syntax).
 
 ## Task
-Read the file at `specs/requirements.input.md`. Transform its content into a concise, unambiguous, testable **EARS-based requirements spec** and save it to `specs/requirements.md`.
+Read the file at `docs/requirements.input.md`. Transform its content into a concise, unambiguous, testable **EARS-based requirements spec** and save it to `docs/requirements.md`.
 
 ## Strictness
 - Do NOT invent scope beyond the input. No hallucinations.
@@ -30,7 +30,7 @@ Read the file at `specs/requirements.input.md`. Transform its content into a con
 - *Event-driven*: “When <trigger>, the <system/service> **shall** <response>.”
 - *Quality*: “The <system/service> **shall** <quality> [threshold/metric].”
 
-## Output Format (exact Markdown for specs/requirements.md)
+## Output Format (exact Markdown for docs/requirements.md)
 Produce a single Markdown document with this structure:
 
 ```markdown
