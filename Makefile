@@ -31,7 +31,7 @@ command:
 	docker exec -it ${IMAGE_NAME}-1 zsh
 
 command-raw:
-	docker compose run dev zsh 
+	docker compose run dev zsh
 
 command-raw-gpu:
 	docker compose -f docker-compose.yaml -f docker-compose-nvidia.yaml run ${IMAGE_NAME} bash
@@ -39,3 +39,5 @@ command-raw-gpu:
 clean-requirements:
 	rm -f dev/poetry.lock
 	
+prune-containers:
+	docker container prune -f
