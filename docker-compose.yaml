@@ -1,0 +1,38 @@
+services:
+  dev:
+    build:
+      context: ./dev
+      target: dev
+    volumes:
+      - ./:/workspace
+      # - ./app:/code # point to app code/container
+      - root-history:/home/dev/history
+      - vscode-server:/home/dev/.vscode-server
+      - huggingface-cache:/home/dev/.cache/huggingface
+      - google-vscode-extension-cache:/home/dev/.cache/google-vscode-extension
+      - ~/.gemini:/home/dev/.gemini
+      # - ~/.config/gcloud:/home/dev/.config/gcloud # uncomment to add gcp credentials
+      - /var/run/docker.sock:/var/run/docker.sock # expose docker socket
+    stdin_open: true
+    tty: true
+    ports:
+      # - "8000:8000" # serving site
+      - "5678:5678" # debugger
+    env_file:
+      - .env
+    environment:
+      GOOGLE_CLOUD_PROJECT: gemini-code-assist-466218
+
+volumes:
+  root-history:
+    name: root-history
+    external: true
+  vscode-server:
+    name: vscode-server
+    external: true
+  huggingface-cache:
+    name: huggingface-cache
+    external: true
+  google-vscode-extension-cache:
+    name: google-vscode-extension-cache
+    external: true
