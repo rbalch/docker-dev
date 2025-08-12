@@ -1,14 +1,21 @@
 {
     "name": "FastAPI Dev",
-    "dockerComposeFile": "../docker-compose.yml",
-    "service": "app",
-    "workspaceFolder": "/code",
-    "settings": {
-      "python.defaultInterpreterPath": "/usr/local/bin/python"
-    },
-    "extensions": [
-      "ms-python.python",
-      "ms-python.black-formatter",
-      "charliermarsh.ruff"
-    ]
-  }
+    "dockerComposeFile": "../docker-compose.yaml",
+    "service": "dev",
+    "workspaceFolder": "/workspace",
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "python.defaultInterpreterPath": "/usr/local/bin/python"
+        },
+        "extensions": [
+          "ms-python.python",
+          "esbenp.prettier-vscode",
+          "google.geminicodeassist",
+          "charliermarsh.ruff",
+          "googlecloudtools.cloudcode",
+          "bierner.markdown-mermaid"
+        ]
+      }
+    }
+}
