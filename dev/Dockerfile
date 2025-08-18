@@ -134,6 +134,8 @@ RUN poetry install --no-root --no-interaction --no-ansi
 
 
 # make dev the default runtime user
+USER root
+RUN chown -R dev:dev $HOME
 USER dev
 WORKDIR /workspace
 # run fixuid first; it remaps dev->host UID:GID, then execs your CMD as 'dev'
