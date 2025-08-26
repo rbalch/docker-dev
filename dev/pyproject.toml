@@ -13,8 +13,8 @@ websockets = "*"
 
 [tool.poetry.group.dev.dependencies]
 debugpy = "*"
+google-adk = "*"
 httpx = "*"
-python-dotenv = "*"
 pre-commit = "*"
 pytest = "*"
 pytest-asyncio = "*"

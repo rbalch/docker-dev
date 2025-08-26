@@ -89,6 +89,7 @@ RUN printf '%s\n' \
     'export POWERLEVEL10K_DISABLE_CONFIGURATION_WIZARD=true' \
     'setopt HIST_IGNORE_ALL_DUPS SHARE_HISTORY INC_APPEND_HISTORY' \
     'source $ZSH/oh-my-zsh.sh' \
+    'alias poetry="poetry -C /workspace/dev"' \
     '[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh' \
     > $HOME/.zshrc
 # after your Oh My Zsh setup and .zshrc that sources ~/.p10k.zsh
@@ -153,7 +154,7 @@ COPY dev-proxy.sh /usr/local/bin/dev-proxy.sh
 RUN chmod +x /usr/local/bin/dev-proxy.sh && chown dev:dev /usr/local/bin/dev-proxy.sh
 USER dev
 ENTRYPOINT ["fixuid","-q","--"]
-CMD ["zsh"]  # or your app command
+CMD ["sleep", "infinity"]  # or your app command
 
 
 # === Release Stage ===

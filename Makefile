@@ -4,7 +4,7 @@ IMAGE_NAME := ${PROJECT_NAME}-dev
 extract-lock:
 	@echo "Extracting poetry.lock from container..."
 	@docker create --name temp-extract ${IMAGE_NAME}
-	@docker cp temp-extract:/home/dev/poetry.lock ./poetry.lock
+	@docker cp temp-extract:/home/dev/poetry.lock ./dev/poetry.lock
 	@docker rm temp-extract
 	@echo "Lock file updated locally."
 
@@ -25,7 +25,7 @@ build-release:
 	cd api && docker build --platform linux/amd64 -f Dockerfile --target release -t ${IMAGE_NAME}:release .
 
 up:
-	docker compose -f docker-compose.yaml up
+	docker compose -f docker-compose.yaml up -d
 
 up-gpu:
 	docker compose -f docker-compose.yaml -f docker-compose-nvidia.yaml up
