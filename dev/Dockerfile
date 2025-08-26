@@ -12,11 +12,13 @@ RUN apt-get update -y && apt-get install --no-install-recommends -y \
     build-essential \
     ca-certificates \
     curl \
+    socat \
     docker.io \
     fzf \
     fontconfig \
     git \
     inotify-tools \
+    openssh-client \
     python3-dev \
     python3-pip \
     sudo \
@@ -102,6 +104,12 @@ RUN chsh -s /usr/bin/zsh dev || true
 # --- GeminiCLI ---
 RUN npm install -g @google/gemini-cli
 
+# --- ClaudeCLI ---
+RUN npm install -g @anthropic-ai/claude-code
+
+# --- Markdown Tree Parser ---
+RUN npm install -g @kayvan/markdown-tree-parser
+
 
 # --- <Poetry (system-wide) + shared venv> ---
 USER root
@@ -139,6 +147,11 @@ RUN chown -R dev:dev $HOME
 USER dev
 WORKDIR /workspace
 # run fixuid first; it remaps dev->host UID:GID, then execs your CMD as 'dev'
+USER root
+# Install proxy helper script into the image so compose can invoke it directly
+COPY dev-proxy.sh /usr/local/bin/dev-proxy.sh
+RUN chmod +x /usr/local/bin/dev-proxy.sh && chown dev:dev /usr/local/bin/dev-proxy.sh
+USER dev
 ENTRYPOINT ["fixuid","-q","--"]
 CMD ["zsh"]  # or your app command
 

@@ -4,7 +4,7 @@ IMAGE_NAME := ${PROJECT_NAME}-dev
 extract-lock:
 	@echo "Extracting poetry.lock from container..."
 	@docker create --name temp-extract ${IMAGE_NAME}
-	@docker cp temp-extract:/home/dev/poetry.lock ./dev/poetry.lock
+	@docker cp temp-extract:/home/dev/poetry.lock ./poetry.lock
 	@docker rm temp-extract
 	@echo "Lock file updated locally."
 
@@ -44,3 +44,9 @@ clean-requirements:
 	
 prune-containers:
 	docker container prune -f
+
+verify-proxy:
+	curl -sS -o /dev/null -w "%{http_code}\n" http://0.0.0.0:3000
+
+bmad:
+	npx bmad-method install
