@@ -34,6 +34,7 @@ services:
       # PROXY_LOG_FILE: "/home/dev/proxy-3000.log" # log location inside dev
     # Start the proxy in background (from image), then keep the container alive for VS Code attach
     # command: ["sh", "-lc", "/usr/local/bin/dev-proxy.sh >/home/dev/proxy-3000.log 2>&1 & exec sleep infinity"]
+    command: ["sleep", "infinity"]
 
   # app:
   #   build:
