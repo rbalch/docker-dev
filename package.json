@@ -1,0 +1,43 @@
+{
+  "name": "ai-dev-starter-kit",
+  "version": "1.0.0",
+  "description": "A CLI tool to scaffold a containerized AI development environment.",
+  "main": "dist/index.js",
+  "bin": {
+    "create-ai-dev": "dist/index.js"
+  },
+  "scripts": {
+    "start": "npm run build && node dist/index.js",
+    "test": "jest",
+    "build": "tsc",
+    "e2e": "bats tests/e2e"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rbalch/docker-dev.git"
+  },
+  "keywords": [
+    "ai",
+    "scaffolding",
+    "cli",
+    "docker"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rbalch/docker-dev/issues"
+  },
+  "homepage": "https://github.com/rbalch/docker-dev#readme",
+  "dependencies": {
+    "inquirer": "^12.9.4",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.9",
+    "@types/jest": "^30.0.0",
+    "@types/js-yaml": "^4.0.9",
+    "jest": "^30.1.1",
+    "ts-jest": "^29.4.1",
+    "typescript": "^5.9.2"
+  }
+}

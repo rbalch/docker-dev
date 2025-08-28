@@ -124,3 +124,26 @@ make verify-proxy
 - `make command` — shell into dev container
 - `make extract-lock` — copy `poetry.lock` from image to `dev/`
 - `make prune-containers` — prune stopped containers
+
+---
+
+## Developing the Scaffolding Tool
+
+This project is not only a template, but also the CLI tool that generates the template. To work on the CLI tool itself, follow these steps:
+
+1.  **Install Dependencies:**
+    ```bash
+    npm install
+    ```
+
+2.  **Run for Testing:**
+    To build the TypeScript code and run the CLI interactively, use the `start` script:
+    ```bash
+    npm start
+    ```
+
+3.  **Run Tests:**
+    To run the unit and end-to-end tests:
+    ```bash
+    npm test
+    ```
