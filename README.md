@@ -2,6 +2,18 @@
 
 Template + fully loaded dev environment for Python projects. Run everything inside the container (Docker or VS Code Remote) for an isolated, reproducible setup per project.
 
+## Quick Start: Scaffolding a New Project
+
+To generate a new development environment, run the following command in your terminal:
+
+```bash
+npx github:rbalch/docker-dev
+```
+
+This will launch an interactive setup guide to create a new containerized project.
+
+---
+
 ## Features
 
 - Multi-stage Docker build for optimized image size

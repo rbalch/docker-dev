@@ -10,7 +10,7 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-dist/
+# dist/ # Intentionally commented out to allow npx execution from GitHub
 downloads/
 eggs/
 .eggs/
@@ -208,3 +208,17 @@ __marimo__/
 
 # node
 node_modules/
+
+# Node.js / TypeScript
+# =====================
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Build cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
