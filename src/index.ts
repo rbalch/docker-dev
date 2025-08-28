@@ -2,6 +2,7 @@
 
 import { runPrompts } from './prompts';
 import { generateProject } from './generator';
+import { ensureVolumesExist } from './docker';
 import { runInstaller } from './installer';
 
 async function main() {
@@ -15,17 +16,20 @@ async function main() {
     // 2. Generate the project files
     await generateProject(config);
 
-    // 3. Run the installer for the agentic framework
+    // 3. Ensure Docker volumes exist
+    await ensureVolumesExist();
+
+    // 4. Run the installer for the agentic framework
     await runInstaller(config.installPath);
 
     console.log('\n✨ All done! Your new AI development environment is ready to go.');
     console.log('\nHere\'s what to do next:');
-    console.log(`\n1.  **Navigate to your project directory:**`);
-    console.log(`    cd ${config.installPath}`);
-    console.log(`\n2.  **Build and start the environment:**`);
-    console.log(`    make up`);
-    console.log(`\n3.  **Open a new terminal and jump into the dev container:**`);
-    console.log(`    make exec`);
+    console.log(`\n1.  **Navigate to your project directory:**
+    cd ${config.installPath}`);
+    console.log(`\n2.  **Build and start the environment:**
+    make up`);
+    console.log(`\n3.  **Open a new terminal and jump into the dev container:**
+    make exec`);
     console.log(`\n4.  **Once inside, you can start working with your agents!**`);
 
   } catch (error) {

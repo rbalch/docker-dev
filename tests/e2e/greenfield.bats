@@ -2,12 +2,14 @@
 
 setup() {
   # Clean up any previous runs
-  rm -rf ai-dev-environment
+  rm -rf ai-dev-environment*
+  # Volumes are expected to persist, so no cleanup here.
 }
 
 teardown() {
   # Clean up after the test
-  rm -rf ai-dev-environment
+  rm -rf ai-dev-environment*
+  # Volumes are expected to persist, so no cleanup here.
 }
 
 @test "Greenfield scaffolding with default prompts" {
@@ -26,4 +28,12 @@ teardown() {
   [ -f "ai-dev-environment/Makefile" ]
   [ -f "ai-dev-environment/docker-compose.yaml" ]
   [ -d "ai-dev-environment/dev" ]
+
+  # Check if the required Docker volumes were created
+  run sudo docker volume ls --format '{{.Name}}'
+  # Assert that each required volume name is present in the output
+  [[ "$output" =~ "root-history" ]]
+  [[ "$output" =~ "vscode-server" ]]
+  [[ "$output" =~ "huggingface-cache" ]]
+  [[ "$output" =~ "google-vscode-extension-cache" ]]
 }
