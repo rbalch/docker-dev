@@ -1,161 +1,228 @@
-# Docker Dev 
+# AI Dev Starter Kit
 
-Template + fully loaded dev environment for Python projects. Run everything inside the container (Docker or VS Code Remote) for an isolated, reproducible setup per project.
+A CLI tool to scaffold containerized AI development environments with integrated agentic framework support. Supports both greenfield (new) and brownfield (existing application) project setups.
 
-## Quick Start: Scaffolding a New Project
+## Quick Start
 
-To generate a new development environment, run the following command in your terminal:
+Generate a new AI development environment:
 
 ```bash
 npx github:rbalch/docker-dev
 ```
 
-This will launch an interactive setup guide to create a new containerized project.
+Or use with command-line arguments:
+
+```bash
+# Greenfield project
+npx github:rbalch/docker-dev --projectType greenfield --installPath my-new-project
+
+# Brownfield project (existing application)
+npx github:rbalch/docker-dev --projectType brownfield --installPath my-project --appPath /path/to/existing/app
+```
+
+This launches an interactive setup or uses provided arguments to create a containerized project with integrated AI agent capabilities.
 
 ---
 
 ## Features
 
-- Multi-stage Docker build for optimized image size
-- Poetry-based dependency management
-- *optional* NVIDIA GPU support for machine learning workloads
-- Persistent volumes for history, VS Code server, and HuggingFace cache, etc
-- Zsh + Oh My Zsh + Powerlevel10k prompt preconfigured
-- Node.js 20 and common dev tooling
-- Gemini CLI and Claude Code preinstalled
-- Makefile for simplified Docker operations
+### Core Development Environment
+- **Multi-stage Docker build** for optimized image size
+- **Poetry-based dependency management** for Python projects
+- **Persistent volumes** for history, VS Code server, HuggingFace cache, etc.
+- **Zsh + Oh My Zsh + Powerlevel10k** prompt preconfigured
+- **Node.js 20** and common development tooling
+- **Makefile** for simplified Docker operations
+
+### AI Integration
+- **Gemini CLI** and **Claude Code** preinstalled
+- **BMAD (Be More Agentic Development) Framework** integration
+- **Automated codebase analysis** for brownfield projects
+- **AI agent workspace setup** with proper tooling and configuration
+
+### Project Types
+- **Greenfield**: Start fresh with a clean AI development environment
+- **Brownfield**: Integrate with existing applications, includes automatic codebase XML generation
 
 ## Prerequisites
 
 - Docker and Docker Compose
 - Make (for using the Makefile commands)
+- Node.js (for running the CLI)
 - For GPU support: NVIDIA Container Toolkit
 
-## Getting Started
+## Project Setup Workflow
 
-### Basic Setup
-
-1. Couple startup tips:
-
-- You may need to create the volumes before running the containers:
+### 1. Generate Your Project
 
 ```bash
+npx github:rbalch/docker-dev
+```
+
+The CLI will:
+1. Ask about project type (greenfield vs brownfield)
+2. Prompt for installation path
+3. For brownfield: request path to existing application
+4. Generate Docker configuration and project files
+5. Install the BMAD agentic framework
+6. For brownfield: Generate XML codebase map for AI agents
+
+### 2. Start Your Environment
+
+Navigate to your project directory and start:
+
+```bash
+cd your-project-name
+make up
+```
+
+### 3. Access Your Development Environment
+
+Open a shell in the container:
+
+```bash
+make shell
+```
+
+Or use VS Code Remote - Containers to attach to the running container.
+
+## Project Structure
+
+After scaffolding, your project will have:
+
+```
+your-project/
+├── docker-compose.yaml    # Container orchestration
+├── Makefile              # Development commands
+├── docs/                 # Project documentation
+│   ├── architecture.md   # System architecture
+│   ├── prd.md           # Product requirements
+│   └── codebase.xml     # Generated for brownfield (AI agent reference)
+├── dev/                  # Development environment
+│   ├── Dockerfile        # Container definition
+│   └── ...              # Dev tooling and configuration
+└── .bmad-core/          # AI agent framework
+    ├── agents/          # AI agent definitions  
+    ├── tasks/           # Automated task definitions
+    └── templates/       # Code and document templates
+```
+
+## AI Agent Integration
+
+### Available Agents
+The BMAD framework includes specialized AI agents:
+- **Development agents** for coding tasks
+- **QA agents** for testing and quality assurance  
+- **Documentation agents** for maintaining project docs
+
+### Brownfield Codebase Integration
+For existing applications, the tool automatically:
+1. Analyzes your existing codebase
+2. Generates an XML representation at `docs/codebase.xml`
+3. Configures AI agents to understand your project structure
+4. Mounts your application code for development
+
+## Make Commands
+
+### Essential Commands
+- `make up` — Start the development environment
+- `make shell` — Open shell in the container  
+- `make down` — Stop the environment
+- `make build` — Rebuild the Docker image
+
+### Development Commands  
+- `make extract-lock` — Copy Poetry lockfile from container
+- `make prune-containers` — Clean up stopped containers
+- `make verify-proxy` — Test development proxy (if configured)
+
+## AI Tooling
+
+### Pre-installed CLIs
+- `@google/gemini-cli` — Google Gemini integration
+- `@anthropic-ai/claude-code` — Anthropic Claude integration
+- `bmad-method` — BMAD framework tools
+
+### Credential Management
+AI credentials are mounted from your host:
+- `~/.gemini` — Gemini CLI configuration
+- `~/.claude` — Claude configuration  
+- `~/.claude.json` — Claude Code settings
+
+## Development Workflow
+
+### For New Projects (Greenfield)
+1. Generate project with `npx github:rbalch/docker-dev`
+2. Choose greenfield option
+3. Start with `make up` 
+4. Begin development with AI agent assistance
+
+### For Existing Projects (Brownfield)
+1. Generate project with `npx github:rbalch/docker-dev`  
+2. Choose brownfield and provide your app path
+3. Start with `make up` (your app is mounted at `/app`)
+4. AI agents have access to your codebase XML for context
+
+### Python Development
+- Use Poetry inside the container for dependency management:
+  ```bash
+  poetry add <package>
+  poetry install
+  ```
+- VS Code debugger support on port 5678 (set `DEBUG=1` in `.env`)
+
+## Developing the CLI Tool
+
+To contribute to or modify the scaffolding CLI itself:
+
+### Setup
+```bash
+npm install
+```
+
+### Development
+```bash
+npm start          # Build and run interactively
+npm test           # Run unit tests
+npm run e2e        # Run end-to-end tests
+npm run build      # Compile TypeScript
+```
+
+### Testing
+The project includes comprehensive testing:
+- **Unit tests** for individual components
+- **E2E tests** using BATS for full workflow validation
+- **Brownfield integration tests** for codebase XML generation
+
+## Troubleshooting
+
+### Volume Permissions
+If you encounter volume permission issues:
+```bash
 docker volume create root-history
-docker volume create vscode-server
+docker volume create vscode-server  
 docker volume create huggingface-cache
 docker volume create google-vscode-extension-cache
 ```
 
-- If your project needs environment variables, create a project-specific `.env` (this repo does not ship a default)
-
+### Environment Variables
+Create a project-specific `.env` file for custom configuration:
 ```bash
 touch .env
 ```
 
-- Install pre-commit hooks:
-
-```bash
-pre-commit install
-```
-
-- Set the git config:
-
+### Git Configuration
+Set up Git inside the container:
 ```bash
 git config user.name "Your Name"
 git config user.email "you@example.com"
 ```
 
-2. Clone this repository
-3. Update the `pyproject.toml` with your project details and dependencies
-4. Build the Docker image:
-
-```bash
-make build
-```
-
-5. Extract the lockfile from the container:
-
-```bash
-make extract-lock
-```
-
-You should now have a `poetry.lock` file in the `dev` directory.
-
-### Run and Use the Dev Environment
-
-- Bring up the dev container (detach in another terminal if preferred):
-
-```bash
-make up
-```
-
-- Open a shell inside the dev container (Zsh with Powerlevel10k):
-
-```bash
-make command
-```
-
-- Use with VS Code Remote:
-  - Open this folder in VS Code and attach to the running `dev` container via Remote - Containers.
-
-### AI Tooling
-
-- Preinstalled CLIs inside the container:
-  - `@google/gemini-cli`
-  - `@anthropic-ai/claude-code`
-- Credentials are mounted from your host by `docker-compose.yaml` if present (e.g., `~/.gemini`, `~/.claude`, `~/.claude.json`).
-
-### Python Inside the Container
-
-- Poetry is preinstalled and configured to use a shared virtualenv.
-- Always install dependencies inside the container:
-
-```bash
-poetry add <package>
-```
-
-### Debugging
-
-- Set `DEBUG=1` in your `.env` to enable `debugpy` on port `5678` (see `app/server.py`).
-- Attach VS Code debugger to port 5678.
-
-### Dev Proxy (optional)
-
-- Use `/usr/local/bin/dev-proxy.sh` to forward a local port to another service.
-- Configure with envs: `PROXY_PORT`, `TARGET_HOST`, `TARGET_PORT`, `PROXY_BIND`, `PROXY_LOG_FILE`.
-- Verify with:
-
-```bash
-make verify-proxy
-```
-
-### Make Commands Cheat Sheet
-
-- `make build` — build dev image
-- `make up` — start dev service
-- `make command` — shell into dev container
-- `make extract-lock` — copy `poetry.lock` from image to `dev/`
-- `make prune-containers` — prune stopped containers
-
 ---
 
-## Developing the Scaffolding Tool
+## License
 
-This project is not only a template, but also the CLI tool that generates the template. To work on the CLI tool itself, follow these steps:
+ISC
 
-1.  **Install Dependencies:**
-    ```bash
-    npm install
-    ```
+## Contributing
 
-2.  **Run for Testing:**
-    To build the TypeScript code and run the CLI interactively, use the `start` script:
-    ```bash
-    npm start
-    ```
-
-3.  **Run Tests:**
-    To run the unit and end-to-end tests:
-    ```bash
-    npm test
-    ```
+Issues and pull requests welcome at the [GitHub repository](https://github.com/rbalch/docker-dev).
