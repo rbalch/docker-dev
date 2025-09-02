@@ -1,12 +1,7 @@
 # 5. Epic List
 
-1.  **Epic 1: Foundational Scaffolding & Interactive Setup:**
-    *   **Goal:** Establish the core `npx` command and the interactive setup flow (asking for directory, project type, etc.) to generate a correct, project-specific file structure on the user's local machine.
-
-2.  **Epic 2: Containerization & Environment Bootstrapping:**
-    *   **Goal:** Take the generated file structure and enable the creation of a fully containerized development environment, including the installation of the BMAD agentic framework via `npx bmad-method install`.
-
-3.  **Epic 3: Core Agentic Tooling Integration:**
-    *   **Goal:** Integrate and expose the core AI-powered tools (Automated Context Generation and the Interviewer Agent) via the `gemini-cli` within the running containerized environment.
-
----
+| Epic | Title                                      | Status | Goal                                                                                                                                                                                          |
+| :--- | :----------------------------------------- | :----- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | Foundational Scaffolding & Interactive Setup | Done   | Establish the core `npx` command and the interactive setup flow (asking for directory, project type, etc.) to generate a correct, project-specific file structure on the user's local machine. |
+| 2    | Containerization & Environment Bootstrapping | Done   | Take the generated file structure and enable the creation of a fully containerized development environment, including the installation of the BMAD agentic framework via `npx bmad-method install`. |
+| 3    | Core Agentic Tooling Integration           | To Do  | Integrate and expose the core AI-powered tools (Automated Context Generation and the Interviewer Agent) via the `gemini-cli` within the running containerized environment.                         |

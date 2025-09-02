@@ -43,6 +43,9 @@
 
 ## Epic 2: Containerization & Environment Bootstrapping
 
+**Status: Done**
+*(This epic was completed as part of the initial implementation of the CLI tool.)*
+
 **Goal:** Take the generated file structure and enable the creation of a fully containerized development environment, including the installation of the BMAD agentic framework via `npx bmad-method install`.
 
 **Story 2.1: Install Core Agentic Framework**
