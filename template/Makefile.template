@@ -1,15 +1,15 @@
 PROJECT_NAME := $(notdir $(CURDIR))
 IMAGE_NAME := ${PROJECT_NAME}-dev
 
-.PHONY: help build up down exec logs extract-lock verify-proxy
+.PHONY: help build up down shell logs extract-lock verify-proxy
 
 help:
 	@echo "Usage: make [target]"
 	@echo "Targets:"
 	@echo "  build         Build the docker containers"
-	@echo "  up            Start the docker containers in the background"
+	@echo "  up            Build and start the docker containers in the background"
 	@echo "  down          Stop the docker containers"
-	@echo "  exec          Get a shell inside the running dev container"
+	@echo "  shell         Get a shell inside the running dev container"
 	@echo "  logs          Follow the logs from all containers"
 	@echo "  extract-lock  Extract poetry.lock from the container to the host"
 	@echo "  verify-proxy  Verify that the dev proxy is running"
@@ -18,14 +18,14 @@ build:
 	docker compose build
 
 up:
-	docker compose up -d
+	docker compose up --build -d
 
 down:
 	docker compose down
 
-# Uses the dynamic image name to connect to the container
-exec:
-	docker exec -it ${IMAGE_NAME}-1 zsh
+# Uses the service name to connect to the container
+shell:
+	docker compose exec dev zsh
 
 logs:
 	docker compose logs -f
