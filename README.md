@@ -29,6 +29,7 @@ This launches an interactive setup or uses provided arguments to create a contai
 ### Core Development Environment
 - **Multi-stage Docker build** for optimized image size
 - **Poetry-based dependency management** for Python projects
+- **VS Code Remote - Containers** preconfigured for seamless IDE integration
 - **Persistent volumes** for history, VS Code server, HuggingFace cache, etc.
 - **Zsh + Oh My Zsh + Powerlevel10k** prompt preconfigured
 - **Node.js 20** and common development tooling
