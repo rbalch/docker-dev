@@ -104,6 +104,8 @@ RUN printf '%s\n' \
     'setopt HIST_IGNORE_ALL_DUPS SHARE_HISTORY INC_APPEND_HISTORY' \
     'source $ZSH/oh-my-zsh.sh' \
     'alias poetry="poetry -C /workspace/dev"' \
+    'alias thinker="gemini -m gemini-2.5-pro"' \
+    'alias coder="gemini -m gemini-2.5-flash"' \
     '[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh' \
     > $HOME/.zshrc
 # after your Oh My Zsh setup and .zshrc that sources ~/.p10k.zsh

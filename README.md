@@ -143,6 +143,14 @@ For existing applications, the tool automatically:
 - `@anthropic-ai/claude-code` — Anthropic Claude integration
 - `bmad-method` — BMAD framework tools
 
+### Gemini CLI Commands
+Once inside the development environment, three commands are available:
+- `gemini` — Default Gemini model
+- `coder` — Gemini 2.5 Flash (optimized for coding tasks)
+- `thinker` — Gemini 2.5 Pro (for planning, tickets, reviews, and difficult coding tasks)
+
+Use `coder` for most development work to optimize token usage. Reserve `thinker` for complex analysis and planning tasks.
+
 ### Credential Management
 AI credentials are mounted from your host:
 - `~/.gemini` — Gemini CLI configuration
