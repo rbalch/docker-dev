@@ -52,7 +52,7 @@ async function main() {
         // 2. Ensure Docker volumes exist
         await (0, docker_1.ensureVolumesExist)();
         if (process.env.SKIP_INSTALLER !== 'true') {
-            await (0, installer_1.runInstaller)(config.installPath);
+            await (0, installer_1.runInstaller)(config);
         }
         console.log('\n✨ All done! Your new AI development environment is ready to go.');
         console.log('\nHere\'s what to do next:');

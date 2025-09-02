@@ -56,7 +56,7 @@ async function main() {
     await ensureVolumesExist();
 
     if (process.env.SKIP_INSTALLER !== 'true') {
-      await runInstaller(config.installPath);
+      await runInstaller(config);
     }
 
     console.log('\n✨ All done! Your new AI development environment is ready to go.');
