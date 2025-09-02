@@ -53,12 +53,16 @@ async function processDockerCompose(config, destPath) {
     const sourceFile = path.join(TEMPLATE_DIR, 'docker-compose.template.yaml');
     const destFile = path.join(destPath, 'docker-compose.yaml');
     let fileContents = await fs.readFile(sourceFile, 'utf8');
+    const appServiceRegex = /  # app:[\s\S]*?(?=\nvolumes:)/;
     if (config.projectType === 'greenfield') {
-        // For greenfield projects, remove the commented-out 'app' service to keep the file clean.
-        const appServiceRegex = /\n  # The \'app\' service is for brownfield projects.[\s\S]*/;
+        // For greenfield projects, remove the 'app' service.
         fileContents = fileContents.replace(appServiceRegex, '');
     }
-    // For brownfield projects, a future story will handle uncommenting and configuring the app service.
+    else if (config.projectType === 'brownfield' && config.appPath) {
+        // For brownfield projects, uncomment and configure the app service.
+        const appService = `  app:\n    build:\n      context: ./app\n      target: development\n    volumes:\n      - ${config.appPath}:/app\n      - /app/node_modules\n      - /app/.next`;
+        fileContents = fileContents.replace(appServiceRegex, appService);
+    }
     await fs.writeFile(destFile, fileContents);
 }
 async function generateProject(config) {

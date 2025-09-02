@@ -4,10 +4,7 @@ import path from 'path';
 export interface ScaffoldingConfig {
   installPath: string;
   projectType: 'greenfield' | 'brownfield';
-  brownfield?: {
-    existingPath: string;
-    importMethod: 'move' | 'copy';
-  };
+  appPath?: string;
 }
 
 /**

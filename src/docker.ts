@@ -15,7 +15,12 @@ async function getExistingVolumes(): Promise<string[]> {
     // Use the format flag for easy parsing
     const { stdout } = await execAsync("docker volume ls --format '{{.Name}}'");
     return stdout.trim().split('\n').filter(Boolean);
-  } catch (error) {
+  } catch (error: any) {
+    if (error.stderr && error.stderr.includes('permission denied')) {
+      console.warn('   Permission denied. Trying with sudo...');
+      const { stdout } = await execAsync("sudo docker volume ls --format '{{.Name}}'");
+      return stdout.trim().split('\n').filter(Boolean);
+    }
     console.error('❌ Error listing Docker volumes. Is Docker running?');
     throw error;
   }

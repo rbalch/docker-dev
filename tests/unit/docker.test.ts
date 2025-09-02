@@ -83,4 +83,29 @@ describe('ensureVolumesExist', () => {
     expect(mockedExec).toHaveBeenCalledWith("docker volume ls --format '{{.Name}}'", expect.any(Function));
     expect(mockedExec).toHaveBeenCalledTimes(1); // Only the ls command should be called
   });
+
+  it('should re-run with sudo if permission is denied', async () => {
+    // Arrange: Simulate `docker volume ls` failing with permission denied, then succeeding with sudo
+    const permissionError = new Error('Got permission denied while trying to connect to the Docker daemon socket');
+    (permissionError as any).stderr = 'Got permission denied while trying to connect to the Docker daemon socket';
+
+    mockedExec.mockImplementation((command, callback) => {
+      if (command.startsWith('sudo')) {
+        callback(null, { stdout: 'root-history', stderr: '' });
+      } else if (command.startsWith('docker volume ls')) {
+        callback(permissionError, { stdout: '', stderr: 'Got permission denied while trying to connect to the Docker daemon socket' });
+      } else {
+        callback(null, { stdout: 'Volume created', stderr: '' });
+      }
+    });
+
+    // Act
+    await ensureVolumesExist();
+
+    // Assert
+    expect(mockedExec).toHaveBeenCalledWith("docker volume ls --format '{{.Name}}'", expect.any(Function));
+    expect(mockedExec).toHaveBeenCalledWith("sudo docker volume ls --format '{{.Name}}'", expect.any(Function));
+    // 1 for ls, 1 for sudo ls, 3 for create (huggingface, google, vscode-server)
+    expect(mockedExec).toHaveBeenCalledTimes(5);
+  });
 });

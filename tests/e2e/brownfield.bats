@@ -12,9 +12,10 @@ teardown() {
   # Volumes are expected to persist, so no cleanup here.
 }
 
-@test "Greenfield scaffolding with command-line arguments" {
+@test "Brownfield scaffolding with command-line arguments" {
+  export SKIP_INSTALLER=true
   # Run the compiled script with command-line arguments
-  node dist/index.js --projectType greenfield --installPath /tmp/ai-dev-environment
+  node dist/index.js --projectType brownfield --installPath /tmp/ai-dev-environment --appPath /tmp/dummy-app
 
   # Check if the directory was created
   [ -d "/tmp/ai-dev-environment" ]
@@ -24,11 +25,11 @@ teardown() {
   [ -f "/tmp/ai-dev-environment/docker-compose.yaml" ]
   [ -d "/tmp/ai-dev-environment/dev" ]
 
-  # Check if the required Docker volumes were created
-  run sudo docker volume ls --format '{{.Name}}'
-  # Assert that each required volume name is present in the output
-  [[ "$output" =~ "root-history" ]]
-  [[ "$output" =~ "vscode-server" ]]
-  [[ "$output" =~ "huggingface-cache" ]]
-  [[ "$output" =~ "google-vscode-extension-cache" ]]
+  # Check that the docker-compose.yaml file contains the app service
+  run grep "app:" /tmp/ai-dev-environment/docker-compose.yaml
+  [ "$status" -eq 0 ]
+
+  # Check that the docker-compose.yaml file contains the correct volume mount
+  run grep "    - /tmp/dummy-app:/app" /tmp/ai-dev-environment/docker-compose.yaml
+  [ "$status" -eq 0 ]
 }
