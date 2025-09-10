@@ -30,6 +30,13 @@ async function runPrompts() {
             name: 'appPath',
             message: 'Enter the absolute path to your existing application:',
             when: (answers) => answers.projectType === 'brownfield',
+        },
+        {
+            type: 'confirm',
+            name: 'useVercel',
+            message: 'Are you using Vercel for deployment?',
+            when: (answers) => answers.projectType === 'brownfield',
+            default: false,
         }
     ]);
     const config = {
@@ -38,6 +45,9 @@ async function runPrompts() {
     };
     if (answers.appPath) {
         config.appPath = answers.appPath;
+    }
+    if (answers.useVercel !== undefined) {
+        config.useVercel = answers.useVercel;
     }
     return config;
 }

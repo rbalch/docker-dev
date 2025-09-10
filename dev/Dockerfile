@@ -18,6 +18,7 @@ RUN apt-get update -y && apt-get install --no-install-recommends -y \
     git \
     inotify-tools \
     openssh-client \
+    procps \
     python3-dev \
     python3-pip \
     rsync \

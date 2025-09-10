@@ -53,7 +53,7 @@ function runInstaller(config) {
                 if (config.projectType === 'brownfield' && config.appPath) {
                     console.log(`✅ Generating codebase XML for brownfield project...`);
                     const outputPath = path.join(destPath, 'docs', 'codebase.xml');
-                    const flattenChild = (0, child_process_1.spawn)('npx', ['bmad-method', 'flatten', '--input', config.appPath, '--output', outputPath], {
+                    const flattenChild = (0, child_process_1.spawn)('sh', ['-c', `echo n | npx bmad-method flatten --input "${destPath}" --output "${outputPath}"`], {
                         cwd: destPath,
                         stdio: 'inherit',
                         shell: true

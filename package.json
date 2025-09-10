@@ -29,16 +29,21 @@
   },
   "homepage": "https://github.com/rbalch/docker-dev#readme",
   "dependencies": {
+    "fs-extra": "^11.3.1",
     "inquirer": "^12.9.4",
     "js-yaml": "^4.1.0",
     "yargs": "^18.0.0"
   },
   "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
     "@types/inquirer": "^9.0.9",
     "@types/jest": "^30.0.0",
     "@types/js-yaml": "^4.0.9",
     "@types/yargs": "^17.0.33",
+    "bats-assert": "^2.2.0",
+    "bats-support": "^0.3.0",
     "jest": "^30.1.1",
+    "jest-mock-extended": "^4.0.0",
     "ts-jest": "^29.4.1",
     "typescript": "^5.9.2"
   }

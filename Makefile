@@ -1,6 +1,9 @@
 PROJECT_NAME := $(notdir $(CURDIR))
 IMAGE_NAME := ${PROJECT_NAME}-dev
 
+# Use docker-compose.vercel.yaml if it exists, otherwise use docker-compose.yaml
+DOCKER_COMPOSE_FILE := $(if $(wildcard docker-compose.vercel.yaml),docker-compose.vercel.yaml,docker-compose.yaml)
+
 .PHONY: help build up down shell logs extract-lock verify-proxy
 
 help:
@@ -15,20 +18,23 @@ help:
 	@echo "  verify-proxy  Verify that the dev proxy is running"
 
 build:
-	docker compose build
+	docker compose -f $(DOCKER_COMPOSE_FILE) build
 
 up:
-	docker compose up -d
+	docker compose -f $(DOCKER_COMPOSE_FILE) up --build -d
 
 down:
-	docker compose down
+	docker compose -f $(DOCKER_COMPOSE_FILE) down
 
 # Uses the service name to connect to the container
 shell:
-	docker compose exec dev zsh
+	docker compose -f $(DOCKER_COMPOSE_FILE) exec dev zsh
+
+# Alias for shell command
+exec: shell
 
 logs:
-	docker compose logs -f
+	docker compose -f $(DOCKER_COMPOSE_FILE) logs -f
 
 extract-lock:
 	@echo "Extracting poetry.lock from container..."

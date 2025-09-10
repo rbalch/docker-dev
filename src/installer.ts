@@ -22,7 +22,7 @@ export function runInstaller(config: ScaffoldingConfig): Promise<void> {
         if (config.projectType === 'brownfield' && config.appPath) {
           console.log(`✅ Generating codebase XML for brownfield project...`);
           const outputPath = path.join(destPath, 'docs', 'codebase.xml');
-          const flattenChild = spawn('npx', ['bmad-method', 'flatten', '--input', config.appPath, '--output', outputPath], {
+          const flattenChild = spawn('sh', ['-c', `echo n | npx bmad-method flatten --input "${destPath}" --output "${outputPath}"`], {
             cwd: destPath,
             stdio: 'inherit',
             shell: true

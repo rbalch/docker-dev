@@ -30,3 +30,14 @@ tests/
 *   **E2E Test Example:** A `greenfield.bats` script would execute the compiled CLI, programmatically answer the prompts for a new greenfield project, and then verify that a `my-test-project` directory with the correct file structure has been created on the disk.
 
 ---
+
+## Testability and Automation
+
+To ensure our application is consistently and reliably testable via automated scripts, the following standard must be adhered to:
+
+**For every interactive prompt presented to the user, a corresponding command-line flag must be implemented.**
+
+This allows automated tests to bypass the interactive prompts and supply values directly. For example, if a prompt asks `Are you using Vercel? (y/N)`, a `--vercel` flag must also be available.
+
+-   **Manual Testing** should proceed through the interactive prompts as a user would.
+-   **Automated Testing** (e.g., `bats` or `jest` integration tests) MUST use the command-line flags to ensure deterministic behavior.

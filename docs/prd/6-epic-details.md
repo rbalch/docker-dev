@@ -41,6 +41,20 @@
 6.  A `docs` directory with placeholder documents is created.
 7.  The generated `docker-compose.yaml` is appropriately configured for a "Greenfield" or "Brownfield" project based on the user's choice.
 
+**Story 1.5: Feedback Cleanup**
+
+*   As a developer,
+*   I want to address feedback and cleanup tasks after initial tool usage,
+*   so that the developer experience is improved and the tool is more robust.
+
+**Acceptance Criteria:**
+1.  `rsync` is added for brownfield projects and a check is in place to ensure it is installed.
+2.  When a brownfield project is detected, the user is asked if they are using Vercel and the container is configured accordingly.
+3.  The proxy is correctly configured in `docker-compose.yaml`.
+4.  Post-installation notes are clearer and provide more detail.
+5.  An empty `.env` file is created.
+6.  The `.bmad-flattenignore` file is copied from the templates.
+
 ## Epic 2: Containerization & Environment Bootstrapping
 
 **Status: Done**

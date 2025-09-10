@@ -5,6 +5,7 @@ export interface ScaffoldingConfig {
   installPath: string;
   projectType: 'greenfield' | 'brownfield';
   appPath?: string;
+  useVercel?: boolean;
 }
 
 /**
