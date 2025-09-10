@@ -1,0 +1,23 @@
+# docker-compose.vercel.template.yaml
+services:
+  dev:
+    ports:
+      - "3000:3000" # expose 3000 from dev for local access / VS Code forwarding
+    environment:
+      # Proxy defaults for dev-proxy.sh
+      PROXY_PORT: "3000"        # listen on dev:3000
+      TARGET_HOST: "app"    # target Next.js service name
+      TARGET_PORT: "3000"       # target port inside ifx-app
+      PROXY_BIND: "0.0.0.0"     # bind all interfaces so docker-proxy/VS Code can forward
+      PROXY_LOG_FILE: "/home/dev/proxy-3000.log" # log location inside dev
+    # Start the proxy in background (from image), then keep the container alive for VS Code attach
+    command: ["sh", "-lc", "/usr/local/bin/dev-proxy.sh >/home/dev/proxy-3000.log 2>&1 & exec sleep infinity"]
+
+  app:
+    build:
+      context: ./app
+      target: development
+    volumes:
+      - ./ifx-app:/app
+      - /app/node_modules
+      - /app/.next
