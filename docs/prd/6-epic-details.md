@@ -79,7 +79,7 @@
 *   **As a developer,** I want a simple script to deploy the sample agent to the Google Agent Engine,
 *   **so that** I can quickly test the path from local development to a cloud-hosted agent.
 *   **Acceptance Criteria:**
-    1.  The sample `hello_agent.py` is appropriately wrapped in an `AdkApp` object for deployment.
+    1.  The sample `hello world` is appropriately wrapped in an `AdkApp` object for deployment.
     2.  A `Makefile` command (`make deploy-agent-engine`) is created.
     3.  The command uses the `adk` CLI or the Vertex AI SDK to deploy the `AdkApp` to Agent Engine.
     4.  The script prompts for necessary GCP configuration (Project ID, Region) if not already set.
