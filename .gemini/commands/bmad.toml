@@ -1,6 +1,0 @@
-# Invoked via: /deploy
-
-description = "Load the bmad agents and tools"
-prompt = """
-load the file @.gemini/bmad-method/GEMINI.md and display *help (show command options)
-"""

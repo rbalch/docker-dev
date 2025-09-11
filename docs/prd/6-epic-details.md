@@ -55,36 +55,34 @@
 5.  An empty `.env` file is created.
 6.  The `.bmad-flattenignore` file is copied from the templates.
 
-## Epic 2: Containerization & Environment Bootstrapping
+## Epic 2 (Revised): Foundational ADK Integration & Deployment
 
-**Status: Done**
-*(This epic was completed as part of the initial implementation of the CLI tool.)*
+**Goal:** Empower developers to build and deploy Google ADK-based agents by integrating foundational ADK tooling and a sample agent into the project scaffolding.
 
-**Goal:** Take the generated file structure and enable the creation of a fully containerized development environment, including the installation of the BMAD agentic framework via `npx bmad-method install`.
+**Story 2.1: Integrate ADK Library and "Hello Agent" Sample**
+*   **As a developer,** I want the Google ADK library installed in my dev environment and a runnable "hello world" agent provided,
+*   **so that** I can immediately start experimenting with the ADK's core functionality.
+*   **Acceptance Criteria:**
+    1.  The `google-adk` pip package is included in the `dev` container's dependencies.
+    2.  A new directory `adk/agents` is created containing a runnable `hello_agent.py`.
+    3.  A `Makefile` command (`make run-hello-agent`) is available to execute the sample agent locally.
 
-**Story 2.1: Install Core Agentic Framework**
+**Story 2.2: Implement ADK Scaffolding in Installer**
+*   **As a developer,** I want the project installer to ask if I want to include ADK support, and have a flag for non-interactive setup,
+*   **so that** the necessary ADK files and configurations are automatically and easily generated for me.
+*   **Acceptance Criteria:**
+    1.  The interactive installer includes a prompt asking the user if they want to add Google ADK support.
+    2.  The `npx` command accepts an `--adk-setup` flag to enable this non-interactively.
+    3.  If yes (or if the flag is present), the tool creates the `/adk` directory structure, including the sample agent and a default `adk/config.yaml`.
 
-*   As a developer,
-*   I want the scaffolding tool to automatically run the `npx bmad-method install` command,
-*   so that the core framework and agent personas are installed and configured without manual intervention.
-
-**Acceptance Criteria:**
-1.  The script executes `npx bmad-method install` within the newly created project directory.
-2.  The command successfully creates the `.bmad-core` directory and populates it with the necessary agent and task definitions.
-3.  The script verifies that the installation was successful (e.g., by checking for a key file like `.bmad-core/core-config.yaml`).
-4.  Output from the installation command is displayed to the user for transparency.
-
-**Story 2.2: Provide Final Instructions to Launch Environment**
-
-*   As a developer,
-*   I want the tool to give me a clear, final instruction after it's finished,
-*   so that I know exactly how to build and enter my new development environment.
-
-**Acceptance Criteria:**
-1.  After all file generation and installation steps are complete, the script displays a prominent success message.
-2.  The message includes the exact command needed to build and start the containers (e.g., `docker-compose up --build`).
-3.  The message also includes the command to enter the running development container (e.g., `docker-compose exec dev bash`).
-4.  The script then exits cleanly with a status code of 0.
+**Story 2.3: Create Basic Agent Engine Deployment Script**
+*   **As a developer,** I want a simple script to deploy the sample agent to the Google Agent Engine,
+*   **so that** I can quickly test the path from local development to a cloud-hosted agent.
+*   **Acceptance Criteria:**
+    1.  The sample `hello_agent.py` is appropriately wrapped in an `AdkApp` object for deployment.
+    2.  A `Makefile` command (`make deploy-agent-engine`) is created.
+    3.  The command uses the `adk` CLI or the Vertex AI SDK to deploy the `AdkApp` to Agent Engine.
+    4.  The script prompts for necessary GCP configuration (Project ID, Region) if not already set.
 
 ## Epic 3: Core Agentic Tooling Integration (Revised)
 
