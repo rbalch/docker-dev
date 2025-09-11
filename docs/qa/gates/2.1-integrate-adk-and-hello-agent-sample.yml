@@ -1,0 +1,22 @@
+# <!-- Powered by BMAD™ Core -->
+schema: 1
+story: "2.1"
+story_title: "Integrate ADK Library and Hello Agent Sample"
+gate: "PASS" # PASS|CONCERNS|FAIL|WAIVED
+status_reason: "The story is well-implemented and meets all requirements. The changes are clean, isolated, and provide a solid foundation for future ADK development."
+reviewer: "Quinn (Test Architect)"
+updated: "2025-09-11T22:00:00Z"
+
+# Always present but only active when WAIVED
+waiver: { active: false }
+
+# Issues (if any) - Use fixed severity: low | medium | high
+top_issues: []
+
+# Risk summary (from risk-profile task if run)
+risk_summary:
+  totals: { critical: 0, high: 0, medium: 0, low: 1 }
+  recommendations:
+    must_fix: []
+    monitor:
+      - "Ensure automated tests are added when this component is integrated into the main application."

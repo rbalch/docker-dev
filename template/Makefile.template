@@ -45,3 +45,12 @@ extract-lock:
 
 verify-proxy:
 	curl -sS -o /dev/null -w "%{http_code}" http://0.0.0.0:3000
+
+run-hello-agent-cli:
+	adk run template/adk/agents/hello_agent
+
+run-hello-agent-web:
+	adk web template/adk/agents/hello_agent
+
+run-hello-agent-api:
+	adk api_server template/adk/agents/hello_agent
