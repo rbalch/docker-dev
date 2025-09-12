@@ -4,6 +4,10 @@
 
 The AI Dev Starter Kit is architected as a command-line scaffolding tool (`npx`) built with Node.js. This tool generates a project-specific, multi-container Docker environment on a developer's local machine. The core of the architecture is the separation of the tooling (`dev` container) from the user's application (`app` container), ensuring a clean, decoupled setup. Inside the `dev` container, a Python-based environment runs the `gemini-cli` and the BMAD agentic framework. This provides a **stable, controlled, and extensible toolchain**, ensuring our agents always have the environment they need, independent of the user's local setup.
 
+The scaffolder includes optional, interactive support for:
+*   **Brownfield Vercel Projects:** Automatically configures a `docker-compose.vercel.yaml` override to proxy to a running Vercel development server.
+*   **Google Agent Development Kit (ADK):** Includes a sample "Hello Agent" and the necessary configurations to begin building agents with the ADK.
+
 ## Platform and Infrastructure Choice
 
 The primary platform for this solution is the **developer's local machine**. The architecture does not depend on a specific cloud provider (AWS, Google Cloud, etc.) for the MVP.

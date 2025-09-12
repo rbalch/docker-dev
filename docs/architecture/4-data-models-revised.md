@@ -9,13 +9,9 @@
 export interface ScaffoldingConfig {
   installPath: string;
   projectType: 'greenfield' | 'brownfield';
-  makefile: {
-    filename: string;
-  };
-  brownfield?: {
-    existingPath: string;
-    importMethod: 'move' | 'copy';
-  };
+  appPath?: string;
+  useVercel?: boolean;
+  adkSupport?: boolean;
 }
 ```
 

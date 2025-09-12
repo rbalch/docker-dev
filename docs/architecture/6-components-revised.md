@@ -4,14 +4,14 @@
 
 ### 1. Scaffolding CLI
 
-*   **Responsibility:** Manages the interactive setup with the user. It gathers configuration, generates project files, and **for brownfield projects, it handles the import of the user's existing code by either moving or copying it.**
-*   **Key Interfaces:** The `npx create-ai-project` command.
+*   **Responsibility:** Manages the interactive setup with the user. It gathers configuration, generates project files, and **for brownfield projects, it handles the import of the user's existing code by either moving or copying it.** It also handles optional setup for Vercel projects and the Google Agent Development Kit (ADK).
+*   **Key Interfaces:** The `npx create-ai-project` command and its flags (e.g., `--vercel`, `--adk-setup`).
 *   **Dependencies:** Node.js runtime on the host machine.
 *   **Technology Stack:** TypeScript, Node.js, Inquirer.js.
 
 ### 2. Template Engine
 
-*   **Responsibility:** A logical component within the Scaffolding CLI. It is responsible for taking the user's configuration choices and using them to correctly process and generate the project files from the source templates.
+*   **Responsibility:** A logical component within the Scaffolding CLI. It is responsible for taking the user's configuration choices and using them to correctly process and generate the project files from the source templates. This includes conditionally copying Vercel-specific Docker configurations or the entire `adk/` sample project directory based on user input.
 *   **Key Interfaces:** An internal function, e.g., `generateProject(config)`.
 *   **Dependencies:** The `ScaffoldingConfig` data model.
 *   **Technology Stack:** TypeScript (as part of the Scaffolding CLI).
