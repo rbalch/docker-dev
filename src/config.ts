@@ -6,6 +6,7 @@ export interface ScaffoldingConfig {
   projectType: 'greenfield' | 'brownfield';
   appPath?: string;
   useVercel?: boolean;
+  adkSupport?: boolean;
 }
 
 /**

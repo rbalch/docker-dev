@@ -115,5 +115,10 @@ async function generateProject(config) {
     // Create empty .env file
     const envPath = path.join(destPath, '.env');
     await fs.writeFile(envPath, '', 'utf8');
+    // Copy ADK files if requested
+    if (config.adkSupport) {
+        console.log('✅ Copying Google ADK files...');
+        await copyTemplateDir('adk', destPath);
+    }
     console.log('✅ Project files generated.');
 }

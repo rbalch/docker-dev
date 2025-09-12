@@ -33,12 +33,19 @@ export async function runPrompts(): Promise<ScaffoldingConfig> {
       message: 'Are you using Vercel for deployment?',
       when: (answers) => answers.projectType === 'brownfield',
       default: false,
+    },
+    {
+      type: 'confirm',
+      name: 'adkSupport',
+      message: 'Would you like to include support for the Google Agent Development Kit (ADK)?',
+      default: false,
     }
   ]);
 
   const config: ScaffoldingConfig = {
     installPath: answers.installPath,
     projectType: answers.projectType,
+    adkSupport: answers.adkSupport,
   };
 
   if (answers.appPath) {

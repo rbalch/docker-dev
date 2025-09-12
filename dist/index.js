@@ -76,6 +76,11 @@ async function main() {
         description: 'Use Vercel configuration for brownfield projects',
         default: false,
     })
+        .option('adk-setup', {
+        type: 'boolean',
+        description: 'Include support for the Google Agent Development Kit (ADK)',
+        default: false,
+    })
         .help()
         .argv;
     let config;
@@ -89,6 +94,7 @@ async function main() {
             installPath: argv.installPath || (0, config_1.getUniqueProjectName)(DEFAULT_PROJECT_NAME),
             appPath: argv.appPath,
             useVercel: argv.vercel,
+            adkSupport: argv.adkSetup,
         };
     }
     else {

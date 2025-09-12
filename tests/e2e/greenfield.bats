@@ -32,3 +32,19 @@ teardown() {
   [[ "$output" =~ "huggingface-cache" ]]
   [[ "$output" =~ "google-vscode-extension-cache" ]]
 }
+
+@test "Greenfield scaffolding with --adk-setup flag" {
+  # Run the compiled script with command-line arguments
+  node dist/index.js --projectType greenfield --installPath /tmp/ai-dev-environment-adk --adk-setup
+
+  # Check if the directory was created
+  [ -d "/tmp/ai-dev-environment-adk" ]
+
+  # Check if key files exist
+  [ -f "/tmp/ai-dev-environment-adk/Makefile" ]
+  [ -f "/tmp/ai-dev-environment-adk/docker-compose.yaml" ]
+  [ -d "/tmp/ai-dev-environment-adk/dev" ]
+
+  # Check if the adk directory exists
+  [ -d "/tmp/ai-dev-environment-adk/adk" ]
+}

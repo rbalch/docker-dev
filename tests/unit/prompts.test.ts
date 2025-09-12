@@ -75,4 +75,24 @@ describe('runPrompts', () => {
       projectType: 'greenfield',
     });
   });
+
+  it('should return adkSupport config', async () => {
+    const mockAnswers = {
+      installPath: 'test-project',
+      projectType: 'greenfield',
+      adkSupport: true,
+    };
+    
+    const promptMock = jest.spyOn(inquirer, 'prompt');
+    promptMock.mockResolvedValue(mockAnswers);
+
+    const expectedConfig: ScaffoldingConfig = {
+      installPath: 'test-project',
+      projectType: 'greenfield',
+      adkSupport: true,
+    };
+
+    const config = await runPrompts();
+    expect(config).toEqual(expectedConfig);
+  });
 });

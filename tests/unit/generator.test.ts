@@ -219,4 +219,25 @@ volumes:
       path.join(expectedProjectPath, '.bmad-flattenignore')
     );
   });
+
+  it('should copy ADK files if adkSupport is true', async () => {
+    const config: ScaffoldingConfig = {
+      installPath: 'my-adk-project',
+      projectType: 'greenfield',
+      adkSupport: true,
+    };
+
+    const dockerComposeTemplateContent = `services:\n  dev:\n    build:\n      context: ./dev`;
+    mockedFs.readFile.mockResolvedValue(dockerComposeTemplateContent);
+
+    await generateProject(config);
+
+    const expectedProjectPath = path.resolve(process.cwd(), config.installPath);
+
+    expect(mockedFs.cp).toHaveBeenCalledWith(
+      path.join('/mock/template', 'adk'),
+      path.join(expectedProjectPath, 'adk'),
+      { recursive: true }
+    );
+  });
 });
