@@ -124,6 +124,9 @@ RUN npm install -g @google/gemini-cli
 # --- ClaudeCLI ---
 RUN npm install -g @anthropic-ai/claude-code
 
+# --- Codex (OpenAI) ---
+RUN npm install -g @openai/codex
+
 # --- Markdown Tree Parser ---
 RUN npm install -g @kayvan/markdown-tree-parser
 

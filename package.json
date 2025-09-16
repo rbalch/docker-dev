@@ -10,7 +10,10 @@
     "start": "npm run build && node dist/index.js",
     "test": "jest",
     "build": "tsc",
-    "e2e": "bats tests/e2e"
+    "e2e": "bats tests/e2e",
+    "bmad:refresh": "bmad-method install -f -i codex",
+    "bmad:list": "bmad-method list:agents",
+    "bmad:validate": "bmad-method validate"
   },
   "repository": {
     "type": "git",

@@ -222,3 +222,6 @@ lerna-debug.log*
 
 # Optional npm cache directory
 .npm
+# BMAD (local only)
+.bmad-core/
+.bmad-*/

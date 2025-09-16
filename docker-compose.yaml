@@ -13,6 +13,7 @@ services:
       - ~/.gemini:/home/dev/.gemini
       - ~/.claude:/home/dev/.claude
       - ~/.claude.json:/home/dev/.claude.json
+      - ~/.codex:/home/dev/.codex
       - /var/run/docker.sock:/var/run/docker.sock # expose docker socket
       - ~/.ssh:/home/dev/.ssh
       - ~/.config/gcloud:/home/dev/.config/gcloud

@@ -1,9 +1,11 @@
 version: 4.43.1
-installed_at: '2025-09-10T15:56:40.358Z'
+installed_at: '2025-09-16T19:55:32.103Z'
 install_type: full
 agent: null
 ides_setup:
+  - claude-code
   - gemini
+  - codex
 expansion_packs: []
 files:
   - path: .bmad-core/working-in-the-brownfield.md
@@ -12,17 +14,11 @@ files:
   - path: .bmad-core/user-guide.md
     hash: fa8776b4e0bfa3f7
     modified: false
-  - path: .bmad-core/install-manifest.yaml
-    hash: 524b9583c41b3b47
-    modified: false
   - path: .bmad-core/enhanced-ide-development-workflow.md
     hash: 39beb3516c070e2b
     modified: false
-  - path: .bmad-core/core-config.yaml.bak
-    hash: 89d26529906a0432
-    modified: false
   - path: .bmad-core/core-config.yaml
-    hash: 94ce5b2faad48235
+    hash: 073cf6d2527c545d
     modified: false
   - path: .bmad-core/workflows/greenfield-ui.yaml
     hash: 2b595f235c095790
