@@ -1,4 +1,4 @@
-# 16. Testing Strategy
+# Testing Strategy
 
 Our testing strategy is based on the classic testing pyramid, ensuring we have broad coverage at the unit level and targeted, high-value tests at the end-to-end level. We'll use the tools defined in the Tech Stack section: **Jest** for unit and integration tests, and **bats-core** for end-to-end tests.
 

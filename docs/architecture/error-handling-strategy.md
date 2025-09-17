@@ -1,4 +1,4 @@
-# 18. Error Handling Strategy
+# Error Handling Strategy
 
 ## Error Flow (CLI Scaffolding)
 

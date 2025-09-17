@@ -1,4 +1,4 @@
-# 11. Backend Architecture (Agentic Toolchain)
+# Backend Architecture (Agentic Toolchain)
 
 ## Service Architecture
 

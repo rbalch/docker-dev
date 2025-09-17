@@ -1,4 +1,4 @@
-# 4. Data Models (Revised)
+# Data Models (Revised)
 
 ## **ScaffoldingConfig**
 

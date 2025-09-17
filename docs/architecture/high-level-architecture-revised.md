@@ -1,4 +1,4 @@
-# 2. High-Level Architecture (Revised)
+# High-Level Architecture (Revised)
 
 ## Technical Summary
 

@@ -1,4 +1,4 @@
-# 12. Unified Project Structure
+# Unified Project Structure
 
 This directory structure organizes the source code for the scaffolding tool and the template files it deploys.
 

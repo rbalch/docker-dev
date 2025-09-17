@@ -1,4 +1,4 @@
-# 10. Frontend Architecture (CLI)
+# Frontend Architecture (CLI)
 
 ## Code Organization
 

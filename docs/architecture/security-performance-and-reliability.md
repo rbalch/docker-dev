@@ -1,4 +1,4 @@
-# 15. Security, Performance, and Reliability
+# Security, Performance, and Reliability
 
 ## Security Requirements
 

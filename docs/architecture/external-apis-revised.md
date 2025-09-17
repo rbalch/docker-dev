@@ -1,4 +1,4 @@
-# 7. External APIs (Revised)
+# External APIs (Revised)
 
 This project interacts with the following external services to function.
 

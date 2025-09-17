@@ -1,4 +1,4 @@
-# 19. Monitoring and Support
+# Monitoring and Support
 
 ## Monitoring and Feedback
 

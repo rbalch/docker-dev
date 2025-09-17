@@ -1,4 +1,4 @@
-# 8. Core Workflows
+# Core Workflows
 
 This diagram illustrates the step-by-step process of a developer setting up a new brownfield project using the scaffolding tool.
 

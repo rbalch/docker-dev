@@ -1,4 +1,4 @@
-# 1. Introduction
+# Introduction
 
 This document outlines the complete fullstack architecture for the AI Dev Starter Kit, including the scaffolding tool, the containerized development environment, and their integration. It serves as the single source of truth for AI-driven development, ensuring consistency across the entire technology stack.
 

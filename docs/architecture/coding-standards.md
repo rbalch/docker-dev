@@ -1,4 +1,4 @@
-# 17. Coding Standards (Revised)
+# Coding Standards (Revised)
 
 ## TypeScript Standards (Scaffolding CLI)
 

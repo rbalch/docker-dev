@@ -1,4 +1,4 @@
-# 14. Deployment Architecture
+# Deployment Architecture
 
 ## Deployment Strategy
 

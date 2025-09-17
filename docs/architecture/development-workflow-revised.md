@@ -1,4 +1,4 @@
-# 13. Development Workflow (Revised)
+# Development Workflow (Revised)
 
 ## Local Development Setup
 

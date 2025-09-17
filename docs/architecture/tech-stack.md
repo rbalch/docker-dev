@@ -1,4 +1,4 @@
-# 3. Tech Stack
+# Tech Stack
 
 ## Technology Stack Table
 

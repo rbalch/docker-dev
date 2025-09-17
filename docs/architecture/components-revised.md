@@ -1,4 +1,4 @@
-# 6. Components (Revised)
+# Components (Revised)
 
 ## Component List
 
