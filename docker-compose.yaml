@@ -23,6 +23,7 @@ services:
     ports:
       - "8000:8000" # serving site
       - "5678:5678" # debugger
+      - "3000:3000" # next.js
     env_file:
       - .env
     environment:

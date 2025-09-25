@@ -1,1 +1,0 @@
-# SCRATCHPAD.md

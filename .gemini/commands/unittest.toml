@@ -1,6 +1,0 @@
-# Invoked via: /unittest
-
-description = "Run unit tests"
-prompt = """
-!pytest /code/tests/
-"""

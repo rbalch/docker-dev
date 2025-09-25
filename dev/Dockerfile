@@ -17,6 +17,7 @@ RUN apt-get update -y && apt-get install --no-install-recommends -y \
     fontconfig \
     git \
     inotify-tools \
+    nano \
     openssh-client \
     procps \
     python3-dev \
@@ -134,6 +135,13 @@ RUN npm install -g @kayvan/markdown-tree-parser
 # --- gcloud ---
 RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg && apt-get update -y && apt-get install google-cloud-cli -y
 
+# --- uv ---
+USER root
+# Add the GPG key
+RUN curl -sS https://debian.griffo.io/EA0F721D231FDD3A0A17B9AC7808B4DD62C41256.asc | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/debian.griffo.io.gpg
+# Add the repository
+RUN echo "deb https://debian.griffo.io/apt $(lsb_release -sc 2>/dev/null) main" | sudo tee /etc/apt/sources.list.d/debian.griffo.io.list
+RUN apt update -y && apt install -y --no-install-recommends uv
 
 # --- <Poetry (system-wide) + shared venv> ---
 USER root
