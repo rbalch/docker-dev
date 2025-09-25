@@ -107,6 +107,7 @@ RUN printf '%s\n' \
     'alias poetry="poetry -C /workspace/dev"' \
     'alias thinker="gemini -m gemini-2.5-pro"' \
     'alias coder="gemini -m gemini-2.5-flash"' \
+    'spec-driven() { uvx --from git+https://github.com/github/spec-kit.git "$@"; }' \
     '[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh' \
     > $HOME/.zshrc
 # after your Oh My Zsh setup and .zshrc that sources ~/.p10k.zsh
