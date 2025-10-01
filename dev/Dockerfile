@@ -17,6 +17,7 @@ RUN apt-get update -y && apt-get install --no-install-recommends -y \
     fontconfig \
     git \
     inotify-tools \
+    lsof \
     nano \
     openssh-client \
     procps \
